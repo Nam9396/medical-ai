@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+medical_ai_env/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Streamlit cache and config
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Python environment files
+*.pyc
+*.pyo
+*.pyd
+
+# macOS and Linux
+.DS_Store
+*.swp
+*~
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# Test/cache tools
+.cache/
+pytest_cache/
+.mypy_cache/
+.dmypy.json
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS-specific
+Thumbs.db

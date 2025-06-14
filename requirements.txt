@@ -1,0 +1,15 @@
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-text-splitters
+langgraph
+faiss-cpu
+pymupdf
+tiktoken
+streamlit
+biopython
+xmltodict
+huggingface-hub
+langchain-huggingface
+gradio-client
