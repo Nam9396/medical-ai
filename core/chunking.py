@@ -19,7 +19,7 @@ def hash_funcs():
     return { subclass: return_id for subclass in subclasses }
 
 
-@st.cache_data(show_spinner=True, hash_funcs=hash_funcs())
+# @st.cache_data(show_spinner=True, hash_funcs=hash_funcs())
 def chunk_files(files: List[File], chunk_size: int, chunk_overlap: int) -> List[Document]:
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
         encoding_name="cl100k_base",
