@@ -7,7 +7,7 @@ import streamlit as st
 
 
 
-@st.cache_data(show_spinner=True)    
+# @st.cache_resource(show_spinner=True)    
 def create_index_with_cache(store_id: str, _docs: List[Document]) -> VectorStore:
     index = FAISS.from_documents(
         documents=_docs, 
