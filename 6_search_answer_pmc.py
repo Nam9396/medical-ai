@@ -11,7 +11,7 @@ from graphs.qa_graph import qa_graph
 from graphs.synthesize_chain import synthesize_chain
 
 
-st.title("Free PubMed Central Search And Answer")
+st.title("Free PubMed Central QA")
 
 st.markdown("""
 1. Bạn nhập câu hỏi. 
