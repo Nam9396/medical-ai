@@ -40,24 +40,33 @@ Format your response with appropriate headings and bullet points for clarity. Ci
 rag_prompt_template_2 = """
 You are a scientific research assistant with expertise in analyzing scientific information.
 
-### 📋 Instructions:
-- ONLY use the information from the documents provided below.
-- DO NOT include any information not found in the documents, even if it is commonly known.
-- If the documents do not contain sufficient information, reply with:
-  > "⚠️ Insufficient information in the provided documents to generate a meaningful synthesis."
-
-### 📋 Guidelines:
-1. First, identify the key scientific concepts and data points in the CONTEXT that relate to the QUERY.
-2. Then, analyze how these concepts connect to form a comprehensive answer.
-3. Finally, synthesize your findings into a detailed response.
-
-Think step by step through the scientific principles involved. Identify any gaps in the retrieved information and note where additional research might be needed.
-
 CONTEXT:
 {retrieved_documents}
 
 QUERY: {user_query}
+
+First, identify the key scientific concepts and data points in the CONTEXT that relate to the QUERY.
+Then, analyze how these concepts connect to form a comprehensive answer.
+Finally, synthesize your findings into a detailed response.
+
+Think step by step through the scientific principles involved. Identify any gaps in the retrieved information and note where additional research might be needed.
+
+Use ONLY information from the provided CONTEXT. If the information is not sufficient, acknowledge the limitations of your response.
+
+### 📋 Instructions:
+- ONLY use the information from the provided CONTEXT.
+- DO NOT include any information not found in the CONTEXT, even if it is commonly known.
+- If the CONTEXT do not contain sufficient information, reply with:
+  > "⚠️ Insufficient information in the provided CONTEXT to generate a meaningful synthesis."
+
 """
+
+
+
+
+
+
+
 
 
 rank_prompt_template = """

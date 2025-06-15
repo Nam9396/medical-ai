@@ -81,7 +81,7 @@ class PdfFile(File):
 # file là BytesIO: objects are in-memory streams and are automatically cleaned up by Python's garbage collector when no longer referenced
 # pages là sản phẩn của fitz.open() nên cần đóng lại
 
-@st.cache_data(show_spinner=True)  
+# @st.cache_data(show_spinner=True)  
 def read_files(files: List[BytesIO], removed_words: List[str]) -> List[File]:
     read_files = []
     # read_files chứa các instance về mỗi văn bản, mỗi instance chứa docs là một list các text block từ các page (thông tin định vị nằm trong metadata)
