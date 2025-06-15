@@ -8,12 +8,17 @@ import streamlit as st
 
 
 @st.cache_resource(show_spinner=True)    
-def create_index(store_id: str, _docs: List[Document]) -> VectorStore:
+def create_index_with_cache(store_id: str, _docs: List[Document]) -> VectorStore:
     index = FAISS.from_documents(
         documents=_docs, 
         embedding=OpenAIEmbeddings()
     )
     return index
-
 # store_id chỉ có vai trò trong quá trình cache_resource
 
+def create_index_no_cache(docs: List[Document]) -> VectorStore:
+    index = FAISS.from_documents(
+        documents=docs, 
+        embedding=OpenAIEmbeddings()
+    )
+    return index

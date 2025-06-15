@@ -12,7 +12,7 @@ import time
 from setting import rank_prompt_template, get_rank_model
 
 from core.entrez import get_iter_text, get_body_text
-from core.chunking import chunk_article
+from core.chunking import chunk_pmc_article
 
 Entrez.email = "nguyenthanhnam9396@gmail.com"
 Entrez.api_key = "b8ec89560a7de7899dc38d867a60972dc708"
@@ -55,17 +55,16 @@ def get_article_abstract(data: str):
     abstract_elems = entry.findall(".//abstract")
     abstract = "\n\n".join([ get_iter_text(elem, "Không tìm thấy tóm tắt") for elem in abstract_elems ]) if abstract_elems else "Không tìm thấy tóm tắt"
     # desired_ids = {"pmcid", "pmid", "doi"}
-    pmid = None
+    pmcid = None
     for id_elem in entry.findall(".//article-id"):
         id_type = id_elem.attrib.get("pub-id-type", "No id detected")
-        if id_type == "pmid":
-            pmid = id_elem.text
-
+        if id_type == "pmcid":
+            pmcid = id_elem.text
     doc = Document(page_content="")
     doc.metadata = {
         "title": title,
         "abstract": abstract,
-        "pmid": pmid
+        "pmcid": pmcid
     }
     return doc     
 
@@ -86,14 +85,9 @@ def rank_article(question: str, doc: Document) -> Optional[Document]:
 def get_article_fulltext(data: str, doc: Document) -> Document:
     entry = ET.fromstring(data)
     body_elem = entry.find(".//body")
-    body = get_body_text(body_elem, "Không tìm thấy nội dung chính")
-    doc.page_content = body
-    return doc
-
-
-def chunk_article_full_text(doc: Document) -> List[Document]:   
-    chunks_store = chunk_article(article=doc, chunk_size=300, chunk_overlap=50)
-    return chunks_store
+    body_text = get_body_text(body_elem, "Không tìm thấy nội dung chính, hoặc nội dung là hình ảnh.")
+    doc.page_content = body_text
+    return body_text, doc
 
 
 def process_one_pmc_article(question: str, id: str) -> Optional[Tuple[Dict, List]]:
@@ -101,11 +95,15 @@ def process_one_pmc_article(question: str, id: str) -> Optional[Tuple[Dict, List
     abstract_obj = get_article_abstract(data=raw_obj)
     rank_obj = rank_article(question=question, doc=abstract_obj)
     if rank_obj is not None: 
-        fulltext_obj = get_article_fulltext(data=raw_obj, doc=rank_obj)
-        chunk_store = chunk_article_full_text(doc=fulltext_obj) 
-        return rank_obj, chunk_store
+        body_text, doc = get_article_fulltext(data=raw_obj, doc=rank_obj)
+        if body_text == "Không tìm thấy nội dung chính, hoặc nội dung là hình ảnh.":
+            return None
+        else: 
+            chunk_store = chunk_pmc_article(article=doc, chunk_size=300, chunk_overlap=50) 
+            return rank_obj, chunk_store
     else: 
         return None
+
 
 def retry_process_article(question: str, id: str, retries=3, delay=2) -> Optional[Tuple]:
     for attempt in range(retries):

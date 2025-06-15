@@ -3,7 +3,7 @@ import time
 
 from core.parsing import read_files
 from core.chunking import chunk_files
-from graphs.synthesize_topic_graph import synthesize_topic_graph
+from graphs.synthesize_graph import synthesize_graph
 from components.ui import display_general_error, display_general_warning, display_retry_loop_error
 
 st.title("Tổng hợp theo chủ đề")
@@ -12,8 +12,9 @@ st.markdown("Bạn đang gặp khó khăn khi đọc một đoạn văn bản qu
 
 
 uploaded_files = st.file_uploader(
-    label="Tải lên file .pdf", 
+    label="Tải lên một hoặc nhiều file pdf", 
     type=["pdf"], 
+    help="Chỉ xử lý file chứa nội dung có thể bôi đen và copy paste. Không chấp nhận file pdf chứa nội dung là hình ảnh scan.",
     accept_multiple_files=True
 )
 
@@ -68,7 +69,7 @@ if "INPUT_FILES" not in st.session_state:
 chunks_store = chunk_files(st.session_state["INPUT_FILES"], chunk_size=300, chunk_overlap=50)
 
 if len(chunks_store["docs"]) == 0:
-    display_general_warning(message="File không có nội dung. Bấm đặt lại, xóa file cũ và tải lên có nội dung.")
+    display_general_warning(message="File không có nội dung hoặc nội dung là hình ảnh scan. Bấm đặt lại, xóa file cũ và tải lên file có nội dung.")
 
 with st.form(key='qa_form'):
         query = st.text_area("Nhập chủ đề cần tổng hợp")
@@ -82,7 +83,7 @@ if submit and query:
         
         for attempt in range(3):
             try:
-                response = synthesize_topic_graph(query=query, documents=chunks_store["docs"])
+                response = synthesize_graph(query=query, documents=chunks_store["docs"])
                 break
             except Exception as e:
                 display_retry_loop_error(e)
@@ -98,5 +99,5 @@ if submit and query:
             for doc in response["relevant_docs"]:
                 metadata_values = list(doc.metadata.values())
                 st.write(doc.page_content)
-                st.write(f"name: {metadata_values[0]} - page: {metadata_values[1]} - block: {metadata_values[2]}")
+                st.write(f"Tên: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}")
                 st.markdown("------")

@@ -50,7 +50,7 @@ def chunk_files(files: List[File], chunk_size: int, chunk_overlap: int) -> List[
     return chunks_store
 
 
-def chunk_article(article: Document, chunk_size: int, chunk_overlap: int) -> List[Document]:
+def chunk_pmc_article(article: Document, chunk_size: int, chunk_overlap: int) -> List[Document]:
     
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
         encoding_name="cl100k_base",
@@ -69,10 +69,10 @@ def chunk_article(article: Document, chunk_size: int, chunk_overlap: int) -> Lis
     for i, chunk in enumerate(chunks):
         sub_doc = Document(page_content=chunk)
         sub_doc.metadata["title"] = article.metadata["title"]
-        sub_doc.metadata["pmid"] = article.metadata["pmid"]
+        sub_doc.metadata["pmcid"] = article.metadata["pmcid"]
         chunks_store.append(sub_doc)
     
-    # ở đây metadata của chunk chỉ cần chứa title và PubmedID để truy xuất bài báo, không cần chứa các trường dữ liệu khác như abstract, relevance_score, justification
+    # ở đây metadata của chunk chỉ cần chứa title và PMCID để truy xuất bài báo, không cần chứa các trường dữ liệu khác như abstract, relevance_score, justification
 
     return chunks_store
             

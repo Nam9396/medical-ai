@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 import json
 from core.hugging_face import medgemma_chat_model, medgemma_endpoint, medgemma_gradio_client
+from components.ui import display_general_error
 
 st.title("MedGemma Image Q&A")
 
@@ -94,8 +95,11 @@ if submit:
         st.stop()
     else:
         with st.spinner("Đang xử lý ...", show_time=True):
-            response = medgemma_chat_model.stream(image_message)
-            st.write_stream(response)
+            try: 
+                response = medgemma_chat_model.stream(image_message)
+                st.write_stream(response)
+            except Exception as e: 
+                display_general_error(e=e, message="Không thể trích xuất dữ liệu hình ảnh từ file hoặc đường dẫn, xin thử lại với file hoặc đường dẫn khác.")
 
         # with st.spinner("Vui lòng đợi trong giây lát ...", show_time=True):
         #     response = medgemma_gradio_client.predict(

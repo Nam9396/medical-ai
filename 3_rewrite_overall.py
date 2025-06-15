@@ -11,9 +11,10 @@ st.title("Viết lại văn bản")
 st.markdown("Bạn đang gặp khó khăn khi đọc một đoạn văn bản quá dài, quá học thuật, hoặc không phù hợp với đối tượng người đọc? Chức năng Viết lại văn bản sẽ giúp bạn chuyển đổi nội dung thành phiên bản dễ hiểu, linh hoạt với bố cục rõ ràng.")
 
 uploaded_files = st.file_uploader(
-    label="Tải lên file .pdf", 
+    label="Tải lên một file pdf", 
     type=["pdf"], 
-    accept_multiple_files=True
+    help="Chỉ xử lý file chứa nội dung có thể bôi đen và copy paste. Không chấp nhận file pdf chứa nội dung là hình ảnh scan.",
+    accept_multiple_files=False
 )
 
 if not uploaded_files: 
@@ -67,7 +68,7 @@ if "INPUT_FILES" not in st.session_state:
 chunks_store = chunk_files(st.session_state["INPUT_FILES"], chunk_size=300, chunk_overlap=50)
 
 if len(chunks_store["docs"]) == 0:
-    display_general_warning(message="File không có nội dung. Bấm đặt lại, xóa file cũ và tải lên có nội dung.")
+    display_general_warning(message="File không có nội dung hoặc nội dung là hình ảnh scan. Bấm đặt lại, xóa file cũ và tải lên file có nội dung.")
 
 with st.spinner("Đang phân tích và tổng hợp ... Vui lòng đợi trong giây lát⏳", show_time=True):
     

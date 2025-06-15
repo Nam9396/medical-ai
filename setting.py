@@ -99,17 +99,22 @@ Using the list of documents provided below, create a new, original piece of cont
 
 **Topic**: {topic}
 
+### 📋 Instructions:
+- ONLY use the information from the documents provided below.
+- DO NOT include any information not found in the documents, even if it is commonly known.
+- If the documents do not contain sufficient information, reply with:
+  > "⚠️ Insufficient information in the provided documents to generate a meaningful synthesis."
+
 ### 📋 Guidelines:
-- Synthesize key insights, facts, or arguments from the documents to support the topic.
-- Organize the content in a logical structure, using **headings, bullet points**, or **numbered sections** as appropriate.
-- Use clear, concise language. Avoid jargon or overly complex phrasing.
-- Ensure the content is **cohesive** and flows naturally between sections.
-- Do not copy any document verbatim; **rephrase** and combine ideas as needed.
-- Add a **suggested title** at the beginning of the output.
-- ✅ If applicable, include a **summary table** capturing the main ideas, comparisons, or clinical factors mentioned. The table should be simple, informative, and relevant to the topic.
+1. Synthesize key insights, facts, or arguments from the documents to support the topic.
+2. **Suggested Title** at the top.
+3. Organize the content in a logical structure, using **headings, bullet points**, or **numbered sections** as appropriate.
+4. Ensure the content is **cohesive** and flows naturally between sections.
+5. Use clear, concise language. Avoid jargon or overly complex phrasing.
+6. Do not copy any document verbatim; **rephrase** and combine ideas as needed.
+7. ✅ If applicable, include a **summary table** capturing the main ideas, comparisons, or clinical factors mentioned. The table should be simple, informative, and relevant to the topic.
 
 ---
-
 📚 **Source Documents**:
 {documents}
 """
@@ -190,7 +195,3 @@ def get_question_to_query_model():
         presence_penalty=0.1,
         frequency_penalty=0.2
     )
-
-max_doc_return = 200
-
-max_doc_analyse = 100

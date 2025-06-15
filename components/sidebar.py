@@ -30,6 +30,6 @@ def sidebar():
         # Model options section
         llm_model = st.selectbox(
             label="Chọn LLM model",
-            options=["gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o-mini", "gpt-3.5-turbo"]
+            options=["gpt-4.1-nano", "gpt-4.1-mini", "gpt-4o-mini", "gpt-3.5-turbo"]
         )        
         st.session_state["LLM_MODEL"] = llm_model
