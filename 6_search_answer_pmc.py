@@ -63,16 +63,16 @@ if st.button("Tìm kiếm") and user_question:
                 relevant_articles.append(result[0])
                 articles_chunk_store.extend(result[1])
         
-        with st.expander("Bước 3: Tổng quan các bài báo phù hợp"):
-            if len(relevant_articles) == 0:
-                st.warning("Sau đánh giá, không có bài báo nào phù hợp hoặc nội dung văn bản là hình ảnh. Hãy thử với từ khóa khác hoặc tăng số lượng bài báo được xử lý.")
-                st.stop()
+    if len(relevant_articles) == 0:
+            st.warning("Sau đánh giá, không có bài báo nào phù hợp hoặc nội dung văn bản là hình ảnh. Hãy thử với từ khóa khác hoặc tăng số lượng bài báo được xử lý.")
+            st.stop()
 
-            st.write(f"Có {len(relevant_articles)} bài báo phù hợp trong tổng số {doc_analyse_number} kết quả")
-            for index, article in enumerate(relevant_articles):
-                title = article.metadata["title"]
-                pmcid = article.metadata["pmcid"]
-                st.write(f"{index + 1}. {title} - PubMed Central ID: {pmcid}")
+    with st.expander("Bước 3: Tổng quan các bài báo phù hợp"):
+        st.write(f"Có {len(relevant_articles)} bài báo phù hợp trong tổng số {doc_analyse_number} kết quả")
+        for index, article in enumerate(relevant_articles):
+            title = article.metadata["title"]
+            pmcid = article.metadata["pmcid"]
+            st.write(f"{index + 1}. {title} - PubMed Central ID: {pmcid}")
         
     with st.spinner("Đang lập chỉ mục ...", show_time=True):
         try: 
