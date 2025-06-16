@@ -46,6 +46,7 @@ def synthesize_graph(query: str, documents: List[Document]) -> Dict:
         question: str
         initial_docs: List[Document]
         relevant_docs: Annotated[List[Document], operator.add]
+        # irrelevant_docs: Annotated[List[Document], operator.add]
         synthesized_doc: str
 
     def rank_docs(state: RankState):
@@ -53,10 +54,14 @@ def synthesize_graph(query: str, documents: List[Document]) -> Dict:
             "question": state["question"],
             "paragraph": state["document"].page_content
         })
-        if response.relevance_score >= 4:
+        if response.relevance_score >= 3:
             return {
                 "relevant_docs": [state["document"]] # lưu ý ở đây response cần đặt trong một [...]
             }
+        # else: 
+        #     return {
+        #         "irrelevant_docs": [state["document"]] # lưu ý ở đây response cần đặt trong một [...]
+        #     }
 
     def initial_parallelization(state: OverallState):
         return [

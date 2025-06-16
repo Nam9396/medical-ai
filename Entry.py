@@ -1,7 +1,6 @@
 import streamlit as st
 from components.sidebar import sidebar
 
-
 st.set_page_config(layout="wide")
 
 introduction_page = st.Page("1_introduction.py", title="Giới thiệu", icon=":material/emoji_people:")

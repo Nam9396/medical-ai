@@ -99,15 +99,15 @@ if st.button("Tìm kiếm") and user_question:
             st.error(f"[FAILED] Thất bại sau 3 lần thử. Tải lại chương trình.")
             st.stop()
 
-        st.markdown("## CÂU TRẢ LỜI")
+        st.markdown("#### CÂU TRẢ LỜI")
         st.markdown(response["answer"])
         st.markdown("---")
         
         with st.expander("Trích dẫn nguồn tài liệu"):
             for doc in response["context"]:
-                metadata_info = f"Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}"        
+                metadata_info = f"**Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}**"        
                 st.write(doc.page_content)
-                st.write(metadata_info)
+                st.markdown(metadata_info)
                 st.markdown("-----")
     
     with st.spinner("Viết bài tổng hợp ngắn ...", show_time=True):
@@ -132,15 +132,15 @@ if st.button("Tìm kiếm") and user_question:
             st.error(f"[FAILED] Thất bại sau 3 lần thử. Tải lại chương trình.")
             st.stop()
 
-        st.markdown("## BÀI TỔNG HỢP NGẮN")
+        st.markdown("#### BÀI TỔNG HỢP NGẮN")
         st.markdown(response)
         st.markdown("---")    
 
         with st.expander("Dẫn nguồn thông tin"):
             for doc in retrieved_docs:
-                metadata_info = f"Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}"        
+                metadata_info = f"**Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}**"        
                 st.write(doc.page_content)
-                st.write(metadata_info)
+                st.markdown(metadata_info)
                 st.markdown("-----")
 
 

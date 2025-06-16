@@ -38,7 +38,7 @@ def overall_rewrite_graph(documents: List[Document]) -> Dict:
     def generate_summary(state: SummaryState):
         response = overall_rewrite_chain(document=state["doc"].page_content, llm=llm)
         metadata_values = list(state["doc"].metadata.values()) # nhớ là .values() trả về object dict_values([1, 2, 3])
-        metadata_info = f"File: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}"        
+        metadata_info = f"**File: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}**"        
         return { "summaries": [{
             "content": response, 
             "metadata_info": metadata_info

@@ -17,9 +17,9 @@ st.markdown("""
             
 """)
 
-user_query = st.text_input("Nhập từ khóa cần tìm kiếm", "pediatric autoimmune encephalitis")
+user_query = st.text_input("Nhập từ khóa cần tìm kiếm.", "pediatric autoimmune encephalitis")
 
-doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích", 10, 200, 20, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
+doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích.", 10, 200, 50, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
 
 if st.button("Tìm kiếm") and user_query:
     

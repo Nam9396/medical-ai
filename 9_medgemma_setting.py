@@ -8,7 +8,7 @@ Sử dụng MedGemma gây phát sinh chi phí (20000đ/giờ). Do đó, bạn c�
 - Bấm **Bất hoạt mô hình** khi không sử dụng để không gây phát sinh chi phí.
 - Quá trình **Kích hoạt mô hình** có thể mất từ 5 - 10 phút. 
 - Nếu phát sinh lỗi, bấm tải lại trang và thử lại sau vài phút.
-- Sau mỗi bước bất hoạt hay khởi động lại, bấm kiểm tra tình trạng để cập nhật trạng thái mới của mô hình
+- Sau mỗi bước bất hoạt hay khởi động lại, bấm kiểm tra tình trạng để cập nhật trạng thái mới của mô hình.
 """)
 
 if "endpoint_status" not in st.session_state:
@@ -29,7 +29,7 @@ def resume_endpoint():
             st.error("Không thể kích hoạt mô hình sau 5 phút. Xin bấm tải lại sau vài phút.")
             st.stop()
 
-st.write(f"Tình trạng mô hình: {st.session_state['endpoint_status']}")
+st.markdown(f"#### Tình trạng mô hình: {st.session_state['endpoint_status']}")
 
 st.button("Kiểm tra tình trạng mô hình", on_click=check_endpoint_status)
 

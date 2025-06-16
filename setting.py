@@ -4,6 +4,8 @@ from langchain_openai import ChatOpenAI
 
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
+
+
 # https://smith.langchain.com/hub/rajkstats/science-product-rag-prompt-non-reasoning
 rag_prompt_template_1 = """
 You are a scientific research assistant with expertise in retrieving and synthesizing scientific information.
@@ -18,24 +20,6 @@ Using ONLY the information in the CONTEXT above, provide a comprehensive answer 
 Format your response with appropriate headings and bullet points for clarity. Cite specific information from the context where relevant.
 """
 
-
-# https://smith.langchain.com/hub/rajkstats/science-product-rag-prompt-reasoning
-# rag_prompt_template_2 = """
-# You are a scientific research assistant with expertise in analyzing scientific information.
-
-# CONTEXT:
-# {retrieved_documents}
-
-# QUERY: {user_query}
-
-# First, identify the key scientific concepts and data points in the CONTEXT that relate to the QUERY.
-# Then, analyze how these concepts connect to form a comprehensive answer.
-# Finally, synthesize your findings into a detailed response.
-
-# Think step by step through the scientific principles involved. Identify any gaps in the retrieved information and note where additional research might be needed.
-
-# Use ONLY information from the provided CONTEXT. If the information is not sufficient, acknowledge the limitations of your response.
-# """
 
 rag_prompt_template_2 = """
 You are a scientific research assistant with expertise in analyzing scientific information.
@@ -58,15 +42,7 @@ Use ONLY information from the provided CONTEXT. If the information is not suffic
 - DO NOT include any information not found in the CONTEXT, even if it is commonly known.
 - If the CONTEXT do not contain sufficient information, reply with:
   > "⚠️ Insufficient information in the provided CONTEXT to generate a meaningful synthesis."
-
 """
-
-
-
-
-
-
-
 
 
 rank_prompt_template = """
@@ -85,9 +61,7 @@ Please read the **Question** and the **Paragraph**, and then return a structured
 2. `justification`: a short explanation of why you assigned that score.
 
 Your response must match the expected format of a structured object with these two fields.
-
 ---
-
 **Question**: {question}
 
 **Paragraph**: {paragraph}
