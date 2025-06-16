@@ -1,0 +1,14 @@
+[server]
+enableStaticServing = true
+
+[[theme.fontFaces]]
+family="nunito-sans"
+url="app/static/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf"
+style="italic"
+[[theme.fontFaces]]
+family="nunito-sans"
+url="app/static/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf"
+style="normal"
+
+[theme]
+font="nunito-sans"

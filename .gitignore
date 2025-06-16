@@ -18,7 +18,6 @@ medical_ai_env/
 
 # Streamlit cache and config
 .streamlit/secrets.toml
-.streamlit/config.toml
 
 # Python environment files
 *.pyc
