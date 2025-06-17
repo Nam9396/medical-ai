@@ -12,14 +12,14 @@ st.markdown("""
 1. Bạn nhập từ khóa cần tìm kiếm. 
 2. Ứng dụng tra cứu cơ sở dữ liệu và tải về 200 bài báo đầu tiên. 
 3. AI đọc tiêu đề và tóm tắt để lọc ra các bài báo có liên quan nhất. 
-4. Ứng dụng trả về một danh sách ID của các bài báo. 
+4. Ứng dụng trả về một danh sách ID của các bài báo.
 5. Copy paste các ID này vào ô tìm kiếm trên [website PubMed](https://pubmed.ncbi.nlm.nih.gov/) để tra cứu toàn văn.         
             
 """)
 
 user_query = st.text_input("Nhập từ khóa cần tìm kiếm.", "pediatric autoimmune encephalitis")
 
-doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích.", 10, 200, 50, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
+doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích.", 10, 200, 100, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
 
 if st.button("Tìm kiếm") and user_query:
     

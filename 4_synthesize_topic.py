@@ -81,6 +81,6 @@ if submit and query:
         with st.expander("Trích dẫn các đoạn văn bản"):
             for doc in response["relevant_docs"]:
                 metadata_values = list(doc.metadata.values())
+                st.markdown(f"**File: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}**")
                 st.write(doc.page_content)
-                st.markdown(f"**Tên: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}**")
                 st.markdown("------")

@@ -92,7 +92,7 @@ if submit and query:
             for doc in response["context"]:
                 metadata_values = list(doc.metadata.values())
                 metadata_info = f"**File: {metadata_values[0]} - Trang: {metadata_values[1]} - Đoạn: {metadata_values[2]}**"        
-                st.write(doc.page_content)
                 st.markdown(metadata_info)
+                st.write(doc.page_content)
                 st.markdown("-----")
 

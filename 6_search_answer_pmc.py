@@ -27,7 +27,7 @@ st.markdown("""
 
 user_question = st.text_input("Nhập câu hỏi")
 
-doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích", 10, 200, 50, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
+doc_analyse_number = st.slider("Chọn số bài báo sẽ được phân tích", 10, 200, 100, help="Số lượng bài báo càng nhiều, thời gian phân tích càng lâu. Bạn cần xem xét giảm thời gian phân tích để tăng tốc độ phản hồi và thử được nhiều lần hơn.")
 
 if st.button("Tìm kiếm") and user_question:
     
@@ -64,7 +64,7 @@ if st.button("Tìm kiếm") and user_question:
                 articles_chunk_store.extend(result[1])
         
     if len(relevant_articles) == 0:
-            st.warning("Sau đánh giá, không có bài báo nào phù hợp hoặc nội dung văn bản là hình ảnh. Hãy thử với từ khóa khác hoặc tăng số lượng bài báo được xử lý.")
+            st.warning("Sau đánh giá, không có bài báo nào phù hợp hoặc nội dung văn bản là hình ảnh. Hãy thử bấm tải lại, tăng số lượng bài báo được xử lý hoặc dùng từ khóa khác.")
             st.stop()
 
     with st.expander("Bước 3: Tổng quan các bài báo phù hợp"):
@@ -106,8 +106,8 @@ if st.button("Tìm kiếm") and user_question:
         with st.expander("Trích dẫn nguồn tài liệu"):
             for doc in response["context"]:
                 metadata_info = f"**Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}**"        
-                st.write(doc.page_content)
                 st.markdown(metadata_info)
+                st.write(doc.page_content)
                 st.markdown("-----")
     
     with st.spinner("Viết bài tổng hợp ngắn ...", show_time=True):
@@ -139,8 +139,8 @@ if st.button("Tìm kiếm") and user_question:
         with st.expander("Dẫn nguồn thông tin"):
             for doc in retrieved_docs:
                 metadata_info = f"**Tên: {doc.metadata['title']} - PubMed Central ID: {doc.metadata['pmcid']}**"        
-                st.write(doc.page_content)
                 st.markdown(metadata_info)
+                st.write(doc.page_content)
                 st.markdown("-----")
 
 
