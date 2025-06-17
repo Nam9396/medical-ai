@@ -7,31 +7,26 @@ st.markdown("""
     
     Ứng dụng được phát triển dựa trên công nghệ Mô hình ngôn ngữ lớn (LLM), với mục tiêu hỗ trợ bạn tiếp cận, đọc hiểu và sử dụng văn bản một cách hiệu quả; phục vụ cho học tập, làm việc hay nghiên cứu.
 
-    ### 🎯 Mục đích của ứng dụng
-    - Giúp người dùng hiểu sâu hơn nội dung của các văn bản phức tạp.
-    - Tiết kiệm thời gian đọc và xử lý tài liệu.
-    - Tạo ra các phiên bản văn bản phù hợp với nhu cầu sử dụng khác nhau.
-    - Tra cứu và trả lời câu hỏi dựa trên cơ sở dữ liệu PubMed.
-    - Tương tác với mô hình LLM y khoa MedGemma từ Google.
-
-    ### 🔧 Các chức năng chính
+    ### Các chức năng chính
     - **Hỏi – Đáp về nội dung văn bản:** Đặt câu hỏi liên quan đến văn bản và nhận được câu trả lời chính xác, ngắn gọn, dựa trên nội dung bạn cung cấp.
     - **Viết lại văn bản ở dạng dễ đọc, dễ hiểu:** Viết lại các đoạn văn với ngôn ngữ dễ hiểu, ngắn gọn, có đề mục rõ ràng.
     - **Viết lại văn bản theo chủ đề:** Bạn cung cấp chủ đề, ứng dụng sẽ tìm trong văn bản những đoạn văn có nội dung phù hợp và viết lại theo cách dễ hiểu, ngắn gọn nhưng vẫn đầy đủ thông tin.
     - **Tra cứu PubMed**: Tra cứu và xếp hạng mức độ liên quan của các bài báo từ PubMed dựa trên câu hỏi.
     - **Hỏi đáp từ PubMed Central**: Dựa trên câu hỏi của người dùng, ứng dụng tra cứu các bài báo có liên quan trên cơ sở dữ liệu Free Pubmed Central và tạo câu trả lời.
-    - **MedGemma**: Hỏi đáp các vấn đề y khoa và chẩn đoán hình ảnh với mô hình MedGemma.
+    - **MedGemma**: Hỏi đáp các vấn đề y khoa và chẩn đoán hình ảnh với mô hình [Google MedGemma](https://huggingface.co/google/medgemma-4b-it).
             
-    ### 📝 Hướng dẫn sử dụng
+    ### Hướng dẫn sử dụng
     - Nhập OpenAI API key của bạn.
     - Tải lên nội dung văn bản muốn xử lý.
     - Chọn chức năng bạn cần: hỏi đáp, viết lại dễ hiểu, viết lại theo chủ đề hoặc tìm kiếm PubMed.
     - Nhập thêm thông tin (nếu có) như câu hỏi cụ thể hoặc chủ đề mong muốn.
     - Nhấn "Thực hiện" và chờ trong giây lát để nhận kết quả từ ứng dụng.
                 
-    ### 🧑‍💻 Tác giả
-    - Bs. Nguyễn Thành Nam
-    - nguyenthanhnam9396@gmail.com
+    ### Tác giả
+    
+    Bs. Nguyễn Thành Nam
+    
+    nguyenthanhnam9396@gmail.com
             
     ### Giới hạn
     - Chỉ xử lý nội dung pdf có thể bôi đen và copy paste. Không xử lý nội dung pdf là hình ảnh scan.
