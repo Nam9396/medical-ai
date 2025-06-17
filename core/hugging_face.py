@@ -18,7 +18,7 @@ llm = HuggingFaceEndpoint(
 
 medgemma_chat_model = ChatHuggingFace(llm=llm)
 
-# medgemma_gradio_client = Client("Nam9396/medgemma-app", hf_token=hf_token)
+medgemma_gradio_client = Client("Nam9396/medgemma-app", hf_token=hf_token)
 
 medgemma_endpoint = get_inference_endpoint(name="medgemma-4b-it-ily", token=hf_token)
 
