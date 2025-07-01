@@ -5,23 +5,10 @@ from langchain_openai import ChatOpenAI
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 
-
 # https://smith.langchain.com/hub/rajkstats/science-product-rag-prompt-non-reasoning
-rag_prompt_template_1 = """
-You are a scientific research assistant with expertise in retrieving and synthesizing scientific information.
-
-CONTEXT:
-{retrieved_documents}
-
-QUERY: {user_query}
-
-Using ONLY the information in the CONTEXT above, provide a comprehensive answer to the QUERY. Include relevant scientific data, methodologies, and findings from the retrieved documents. If the information is not present in the context, state that you don't have sufficient information to answer.
-
-Format your response with appropriate headings and bullet points for clarity. Cite specific information from the context where relevant.
-"""
 
 
-rag_prompt_template_2 = """
+rag_prompt_template = """
 You are a scientific research assistant with expertise in analyzing scientific information.
 
 CONTEXT:

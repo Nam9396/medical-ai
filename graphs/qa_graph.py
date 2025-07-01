@@ -1,23 +1,19 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.vectorstores.base import VectorStore
-from langgraph.graph import Graph, StateGraph, START
+from langgraph.graph import StateGraph, START
 from langchain_core.documents.base import Document
 from typing import TypedDict, List
-from setting import rag_prompt_template_1, rag_prompt_template_2, get_rag_model
+from setting import rag_prompt_template, get_rag_model
 
-# prompt = PromptTemplate(
-#     template=rag_prompt_template_1, 
-#     input_variables=["context", "question"]
-# )
 
 prompt = PromptTemplate(
-    template=rag_prompt_template_2, 
+    template=rag_prompt_template, 
     input_variables=["retrieved_documents", "user_query"]
 )
 
 def qa_graph(
     vector_store: VectorStore
-) -> Graph:
+):
     
     rag_model = get_rag_model()
     
